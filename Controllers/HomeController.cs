@@ -7,11 +7,11 @@ namespace Intex2023.Controllers
 {
     public class HomeController : Controller
     {
-        private Intex_Database2023Context IntextContext { get; set; }
+        private Intex_Database2023Context IntexContext { get; set; }
 
         public HomeController(Intex_Database2023Context intexContext)
         {
-            IntextContext = intexContext;
+            IntexContext = intexContext;
         }
 
         public IActionResult Index()
@@ -19,20 +19,23 @@ namespace Intex2023.Controllers
             return View();
         }
 
-        public IActionResult Burials(int pageNum=1)
+        public IActionResult Burials(string sex, int pageNum=1)
         {
             int pageSize = 20;
 
+            ViewBag.Structures = IntexContext.Structures.ToList();
+
             var x = new BurialViewModel
             {
-                Burialmains = IntextContext.Burialmains
+                Burialmains = IntexContext.Burialmains
+                .Where(x => x.Sex == sex || sex == null)
                 .OrderBy(x => x.Id)
                 .Skip((pageNum - 1) * pageSize)
                 .Take(pageSize),
 
                 PageInfo = new PageInfo
                 {
-                    TotalNumBurials = IntextContext.Burialmains.Count(),
+                    TotalNumBurials = IntexContext.Burialmains.Count(),
                     BurialsPerPage = pageSize,
                     CurrentPage = pageNum
                 }
