@@ -1,5 +1,18 @@
-﻿@*
-    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
-*@
-@{
+﻿@{
+    ViewData["Title"] = "Burials Page";
 }
+@model BurialViewModel
+
+<div class="text-center">
+    <h1 class="display-4 text-monospace text-primary">Welcome</h1> <!--HERE I CHANGED THE FONT AND THE COLOR OF THE WELCOME MESSAGE TO BETTER MATCH THE BUTTONS-->
+</div>
+@foreach (Burialmain b in Model.Burialmains)
+{
+    <partial name="BurialSummary" model="b" />
+}
+
+
+
+<div page-nav="@Model.PageInfo" page-action="Burials" page-classes-enabled="true"
+     page-class="btn" page-class-normal="btn-outline-dark"
+     page-class-selected="btn-primary" class="btn-group font-weight-light btn-group-lg m-1"></div>
