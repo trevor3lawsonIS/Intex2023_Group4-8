@@ -13,6 +13,14 @@ builder.Services.AddDatabaseDeveloperPageExceptionFilter();
 builder.Services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = true)
     .AddEntityFrameworkStores<Intex_Database2023Context>();
 builder.Services.AddControllersWithViews();
+builder.Services.Configure<CookiePolicyOptions>(options =>
+{
+    // This lambda determines whether user consent for non-essential 
+    // cookies is needed for a given request.
+    options.CheckConsentNeeded = context => true;
+
+    options.MinimumSameSitePolicy = SameSiteMode.None;
+});
 builder.Services.Configure<IdentityOptions>(options =>
 {
     // Default Password settings.
@@ -23,15 +31,6 @@ builder.Services.Configure<IdentityOptions>(options =>
     options.Password.RequiredLength = 15;
     options.Password.RequiredUniqueChars = 1;
 });
-builder.Services.Configure<CookiePolicyOptions>(options =>
-{
-    // This lambda determines whether user consent for non-essential 
-    // cookies is needed for a given request.
-    options.CheckConsentNeeded = context => true;
-
-    options.MinimumSameSitePolicy = SameSiteMode.None;
-});
-
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.

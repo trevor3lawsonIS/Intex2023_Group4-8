@@ -1,7 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata;
+
 
 namespace Intex2023.Models
 {
@@ -11,7 +14,8 @@ namespace Intex2023.Models
         {
         }
 
-        public Intex_Database2023Context(DbContextOptions<Intex_Database2023Context> options)
+
+    public Intex_Database2023Context(DbContextOptions<Intex_Database2023Context> options)
             : base(options)
         {
         }
