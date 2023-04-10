@@ -14,7 +14,7 @@ namespace Intex2023.Components
 
         public IViewComponentResult Invoke()
         {
-            ViewBag.SelectedCategory = RouteData?.Values["category"];
+            ViewBag.SelectedSex = RouteData?.Values["sex"];
 
             var types = IntexContext.Burialmains
                 .Select(x => x.Sex)
