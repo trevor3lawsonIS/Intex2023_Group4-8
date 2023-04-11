@@ -37,7 +37,7 @@ app.UseAuthentication();
 app.UseAuthorization();
 
 app.UseEndpoints(endpoints =>
-{
+{                                   
     endpoints.MapControllerRoute("everything", "{headdir}/Page{pageNum}/Sex{sex}/Adult{adult}", new { Controller = "Home", action = "Burials" });
 
     endpoints.MapControllerRoute("headSexPage", "{headdir}/Page{pageNum}/Sex{sex}", new { Controller = "Home", action = "Burials" });
