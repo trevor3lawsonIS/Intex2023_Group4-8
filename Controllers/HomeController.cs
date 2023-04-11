@@ -23,6 +23,30 @@ namespace Intex2023.Controllers
         {
             int pageSize = 20;
 
+            int totalNumBurials;
+
+            if (headdir == null && sex == null)
+            {
+                totalNumBurials = IntexContext.Burialmains.Count();
+            }
+            else if (headdir == null && sex != null)
+            {
+                totalNumBurials = IntexContext.Burialmains
+                    .Where(x => x.Sex == sex).Count();
+            }
+            else if (headdir != null && sex == null)
+            {
+                totalNumBurials = IntexContext.Burialmains
+                    .Where(x => x.Headdirection == headdir).Count();
+            }
+            else
+            {
+                totalNumBurials = IntexContext.Burialmains
+                    .Where(x => x.Headdirection == headdir)
+                    .Where(x => x.Sex == sex)
+                    .Count();
+            }
+
             var x = new BurialViewModel
             {
                 Burialmains = IntexContext.Burialmains
@@ -34,11 +58,7 @@ namespace Intex2023.Controllers
 
                 PageInfo = new PageInfo
                 {
-                    TotalNumBurials = (headdir == null
-                        ? IntexContext.Burialmains.Count()
-                        : IntexContext.Burialmains
-                        .Where(x => x.Headdirection == headdir)
-                        .Where(x=>x.Sex == sex).Count()),
+                    TotalNumBurials = totalNumBurials,
                     BurialsPerPage = pageSize,
                     CurrentPage = pageNum
                 }
