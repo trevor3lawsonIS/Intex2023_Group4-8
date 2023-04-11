@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace Mission09_trev3law.Infrastructure
+namespace Intex2023.Infrastructure
 {
     public static class UrlExtensions
     {
