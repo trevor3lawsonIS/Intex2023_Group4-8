@@ -3,11 +3,11 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace Intex2023.Components
 {
-    public class SexViewComponent : ViewComponent
+    public class AdultViewComponent : ViewComponent
     {
         private Intex_Database2023Context IntexContext { get; set; }
 
-        public SexViewComponent(Intex_Database2023Context intexContext)
+        public AdultViewComponent(Intex_Database2023Context intexContext)
         {
             IntexContext = intexContext;
         }
@@ -18,8 +18,8 @@ namespace Intex2023.Components
             ViewBag.SelectedAdult = RouteData?.Values["adult"];
 
             var types = IntexContext.Burialmains
-                .Where(x => x.Sex == "M" || x.Sex == "F")
-                .Select(x => x.Sex)
+                .Where(x => x.Adultsubadult == "A" || x.Adultsubadult == "C" || x.Adultsubadult == "N LL")
+                .Select(x => x.Adultsubadult)
                 .Distinct()
                 .OrderBy(x => x);
 

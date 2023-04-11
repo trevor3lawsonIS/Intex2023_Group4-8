@@ -18,6 +18,8 @@ namespace Intex2023.Components
         public IViewComponentResult Invoke()
         {
             ViewBag.SelectedHeadDirection = RouteData?.Values["headdir"];
+            ViewBag.SelectedSex = RouteData?.Values["sex"];
+            ViewBag.SelectedAdult = RouteData?.Values["adult"];
 
             var types = IntexContext.Burialmains
                 .Where(x => x.Headdirection == "E" || x.Headdirection == "W" || x.Headdirection == "N LL" || x.Headdirection == "I")
