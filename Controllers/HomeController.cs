@@ -19,26 +19,21 @@ namespace Intex2023.Controllers
             return View();
         }
 
-        public IActionResult Burials(string sex, string headdir, int pageNum=1)
+        [HttpGet]
+        public IActionResult Burials(int pageNum=1)
         {
             int pageSize = 20;
 
             var x = new BurialViewModel
             {
                 Burialmains = IntexContext.Burialmains
-                .Where(p => p.Headdirection == headdir || headdir == null)
-                .Where(p=>p.Sex == sex || sex == null)
                 .OrderBy(x => x.Id)
                 .Skip((pageNum - 1) * pageSize)
                 .Take(pageSize),
 
                 PageInfo = new PageInfo
                 {
-                    TotalNumBurials = (headdir == null
-                        ? IntexContext.Burialmains.Count()
-                        : IntexContext.Burialmains
-                        .Where(x => x.Headdirection == headdir)
-                        .Where(x=>x.Sex == sex).Count()),
+                    TotalNumBurials = IntexContext.Burialmains.Count(),
                     BurialsPerPage = pageSize,
                     CurrentPage = pageNum
                 }
