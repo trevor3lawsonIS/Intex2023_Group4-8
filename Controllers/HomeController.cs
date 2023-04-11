@@ -19,16 +19,13 @@ namespace Intex2023.Controllers
             return View();
         }
 
-        public IActionResult Burials(string sex, int pageNum=1)
+        public IActionResult Burials(int pageNum=1)
         {
             int pageSize = 20;
-
-            ViewBag.Structures = IntexContext.Structures.ToList();
 
             var x = new BurialViewModel
             {
                 Burialmains = IntexContext.Burialmains
-                .Where(x => x.Sex == sex || sex == null)
                 .OrderBy(x => x.Id)
                 .Skip((pageNum - 1) * pageSize)
                 .Take(pageSize),
