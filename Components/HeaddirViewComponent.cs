@@ -20,6 +20,7 @@ namespace Intex2023.Components
             ViewBag.SelectedHeadDirection = RouteData?.Values["headdir"];
 
             var types = IntexContext.Burialmains
+                .Where(x => x.Headdirection == "E" || x.Headdirection == "W" || x.Headdirection == "N LL" || x.Headdirection == "I")
                 .Select(x => x.Headdirection)
                 .Distinct()
                 .OrderBy(x => x);

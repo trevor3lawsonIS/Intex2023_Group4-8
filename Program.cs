@@ -44,6 +44,8 @@ app.UseEndpoints(endpoints =>
 
     endpoints.MapControllerRoute("headDirection", "{headdir}", new { Controller = "Home", action = "Burials", pageNum = 1 });
 
+    endpoints.MapControllerRoute("sex", "{sex}", new { Controller = "Home", action = "Burials", pageNum = 1 });
+
     endpoints.MapControllerRoute(
         name: "default",
         pattern: "{controller=Home}/{action=Index}/{id?}");
