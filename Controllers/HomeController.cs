@@ -58,11 +58,19 @@ namespace Intex2023.Controllers
                     .Where(x => x.Adultsubadult == adult)
                     .Count();
             }
+            else if (headdir == null && sex != null && adult != null)
+            {
+                totalNumBurials = IntexContext.Burialmains
+                    .Where(x => x.Adultsubadult == adult)
+                    .Where(x => x.Sex == sex)
+                    .Count();
+            }
             else
             {
                 totalNumBurials = IntexContext.Burialmains
                     .Where(x => x.Adultsubadult == adult)
                     .Where(x => x.Sex == sex)
+                    .Where(x=>x.Headdirection == headdir)
                     .Count();
             }
 

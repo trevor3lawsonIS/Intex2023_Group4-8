@@ -12,8 +12,8 @@
 
     @foreach (string c in Model)
     {
-        <a asp-controller="Home" asp-action="Burials" asp-route-adult="@c" asp-route-pageNum="1" 
-        asp-route-headdir="@ViewBag.SelectedHeadDirection" asp-route-sex="@ViewBag.SelectedSex"
+        <a asp-controller="Home" asp-action="Burials" asp-route-adult="@c" asp-route-pageNum="1"
+       asp-route-headdir="@(ViewBag.SelectedHeadDirection == null ? "" : ViewBag.SelectedHeadDirection)" asp-route-sex="@(ViewBag.SelectedSex== null ? "" : ViewBag.SelectedSex)"
            class="btn @(ViewBag.SelectedAdult == c ? "btn-primary": "btn-outline-secondary")">@c</a>
     }
 </div>

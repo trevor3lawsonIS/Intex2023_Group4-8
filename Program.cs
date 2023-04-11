@@ -46,11 +46,13 @@ app.UseEndpoints(endpoints =>
 
     endpoints.MapControllerRoute("sexAdultPage", "Page{pageNum}/Sex{sex}/Adult{adult}", new { Controller = "Home", action = "Burials" });
 
+    endpoints.MapControllerRoute("adultPage", "Adult{adult}/Page{pageNum}", new { Controller = "Home", action = "Burials" });
+
     endpoints.MapControllerRoute("sexPage", "Sex{sex}/Page{pageNum}", new { Controller = "Home", action = "Burials" });
 
     endpoints.MapControllerRoute("headDirectionPage", "{headdir}/Page{pageNum}", new { Controller = "Home", action = "Burials" });
 
-    endpoints.MapControllerRoute("adultPage", "{adult}/Page{pageNum}", new { Controller = "Home", action = "Burials" });
+    endpoints.MapControllerRoute("adult", "Adult{adult}", new { Controller = "Home", action = "Burials", pageNum = 1 });
 
     endpoints.MapControllerRoute("Paging", "Page{pageNum}", new { Controller = "Home", action = "Burials" });
 
@@ -58,7 +60,7 @@ app.UseEndpoints(endpoints =>
 
     endpoints.MapControllerRoute("sex", "Sex{sex}", new { Controller = "Home", action = "Burials", pageNum = 1 });
 
-    endpoints.MapControllerRoute("adult", "Adult{adult}", new { Controller = "Home", action = "Burials", pageNum = 1 });
+
 
     endpoints.MapControllerRoute(
         name: "default",

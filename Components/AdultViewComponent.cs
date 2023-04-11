@@ -13,9 +13,9 @@ namespace Intex2023.Components
         }
         public IViewComponentResult Invoke()
         {
+            ViewBag.SelectedAdult = RouteData?.Values["adult"];
             ViewBag.SelectedSex = RouteData?.Values["sex"];
             ViewBag.SelectedHeadDirection = RouteData?.Values["headdir"];
-            ViewBag.SelectedAdult = RouteData?.Values["adult"];
 
             var types = IntexContext.Burialmains
                 .Where(x => x.Adultsubadult == "A" || x.Adultsubadult == "C" || x.Adultsubadult == "N LL")
